@@ -1,0 +1,498 @@
+
+Basic Equations II
+
+<?php
+$input = trim(fgets(STDIN));
+$x = $input * $input - 2;
+echo $x;
+?>
+
+Calculator
+
+<?php
+$numberA = trim(fgets(STDIN));
+$numberB = trim(fgets(STDIN));
+$operator = trim(fgets(STDIN));
+if($operator == "+"){
+    $answer = $numberA + $numberB;
+    echo "$numberA + $numberB = $answer"; 
+}
+if($operator == "-"){
+    $answer = $numberA - $numberB;
+    echo "$numberA - $numberB = $answer";
+}
+if($operator == "*"){
+    $answer = $numberA * $numberB;
+    echo "$numberA * $numberB = $answer";
+}
+if($operator == "/"){
+    $answer = $numberA / $numberB;
+    echo "$numberA / $numberB = $answer";
+}
+
+ Making a checkerboard
+
+<?php
+$input = trim(fgets(STDIN));
+$token = "X";
+for($x = 0; $x < $input; $x++){
+    for($y = 0; $y < $input; $y++){
+        if($token == "X"){
+            echo "*";
+            $token = "*";
+        }
+        else{
+            echo "X";
+            $token = "X";
+        }
+    }
+    echo "!";
+    echo PHP_EOL;
+}
+?>
+
+Basic Arrays
+
+<?php
+$numbers = trim(fgets(STDIN));
+$array = explode(",",$numbers);
+$a = count($array) - 2;
+for($x = 0; $x < $a; $x++){
+    if($array[$x] %2 == 0){
+        echo $array[$x] . "-";
+    }
+}
+echo $array[$x];
+
+Times Table generator
+
+<?php 
+$input = trim(fgets(STDIN));
+for($x = 1; $x <= $input; $x++){
+    for($y = 1; $y <= $input; $y++){
+        if($y > 1){
+            echo "-";
+        }
+        echo $x * $y;
+    }
+    echo PHP_EOL;
+}
+?>
+
+Dealing four players some cards
+
+<?php
+$input = trim(fgets(STDIN));
+$cards = explode(',', $input);
+$player1 = array();
+$player2 = array();
+$player3 = array();
+$player4 = array();
+for($x = 0; $x < 5; $x++){
+    array_push($player1, array_pop($cards));
+    array_push($player2, array_pop($cards));
+    array_push($player3, array_pop($cards));
+    array_push($player4, array_pop($cards));
+}
+$p1 = implode('-', $player1);
+$p2 = implode('-', $player2);
+$p3 = implode('-', $player3);
+$p4 = implode('-', $player4);
+
+echo 'Player 1:';
+echo PHP_EOL;
+print_r($p1);
+echo PHP_EOL;
+echo 'Player 2:';
+echo PHP_EOL;
+print_r($p2);
+echo PHP_EOL;
+echo 'Player 3:';
+echo PHP_EOL;
+print_r($p3);
+echo PHP_EOL;
+echo 'Player 4:';
+echo PHP_EOL;
+print_r($p4);
+?>
+
+Tic Tac Toe
+
+<?php
+$input = trim(fgets(STDIN));
+$moves = explode(',', $input);
+$token = "X";
+$winner = "Tie Game!";
+$grid = array('-', '-', '-', '-', '-', '-', '-', '-', '-');
+//process one move at a time
+for($x = 0; $x <= count($moves); $x++) {
+    if ($token == "X") {
+        if ($moves[$x] == 'UL') {
+            $grid[0] = 'X';
+        }
+        if ($moves[$x] == 'UM') {
+            $grid[1] = 'X';
+        }
+        if ($moves[$x] == 'UR') {
+            $grid[2] = 'X';
+        }
+        if ($moves[$x] == 'ML') {
+            $grid[3] = 'X';
+        }
+        if ($moves[$x] == 'MM') {
+            $grid[4] = 'X';
+        }
+        if ($moves[$x] == 'MR') {
+            $grid[5] = 'X';
+        }
+        if ($moves[$x] == 'LL') {
+            $grid[6] = 'X';
+        }
+        if ($moves[$x] == 'LM') {
+            $grid[7] = 'X';
+        }
+        if ($moves[$x] == 'LR') {
+            $grid[8] = 'X';
+        }
+        $token = 'O';
+    }
+    else { if($token == "O") {
+        if ($moves[$x] == 'UL') {
+            $grid[0] = 'O';
+        }
+        if ($moves[$x] == 'UM') {
+            $grid[1] = 'O';
+        }
+        if ($moves[$x] == 'UR') {
+            $grid[2] = 'O';
+        }
+        if ($moves[$x] == 'ML') {
+        $grid[3] = 'O';
+       }
+        if ($moves[$x] == 'MM') {
+        $grid[4] = 'O';
+       }
+        if ($moves[$x] == 'MR') {
+        $grid[5] = 'O';
+       }
+        if ($moves[$x] == 'LL') {
+        $grid[6] = 'O';
+       }
+        if ($moves[$x] == 'LM') {
+        $grid[7] = 'O';
+       }
+        if ($moves[$x] == 'LR') {
+        $grid[8] = 'O';
+       }
+       $token = 'X';
+    }
+    }
+    //wincheck
+        if($grid[0] == 'X' && $grid[1] == 'X' && $grid[2] == 'X' or $grid[3] == 'X' && $grid[4] == 'X' && $grid[5] == 'X' or $grid[6] == 'X' && $grid[7] == 'X' && $grid[8] == 'X'
+    or $grid[0] == 'X' && $grid[3] == 'X' && $grid[6] == 'X' or $grid[1] == 'X' && $grid[4] == 'X' && $grid[7] == 'X' or $grid[2] == 'X' && $grid[5] == 'X' && $grid[8] == 'X'
+    or $grid[0] == 'X' && $grid[4] == 'X' && $grid[8] == 'X' or $grid[2] == 'X' && $grid[4] == 'X' && $grid[6] == 'X'){
+        $winner = "X Wins!";
+        break;
+    }
+    if($grid[0] == 'O' && $grid[1] == 'O' && $grid[2] == 'O' or $grid[3] == 'O' && $grid[4] == 'O' && $grid[5] == 'O' or $grid[6] == 'O' && $grid[7] == 'O' && $grid[8] == 'O'
+    or $grid[0] == 'O' && $grid[3] == 'O' && $grid[6] == 'O' or $grid[1] == 'O' && $grid[4] == 'O' && $grid[7] == 'O' or $grid[2] == 'O' && $grid[5] == 'O' && $grid[8] == 'O'
+    or $grid[0] == 'O' && $grid[4] == 'O' && $grid[8] == 'O' or $grid[2] == 'O' && $grid[4] == 'O' && $grid[6] == 'O'){
+        $winner = 'O Wins!';
+        break;
+    }
+}
+
+echo $winner;
+echo PHP_EOL;
+$z = 0;
+//output
+for($x = 0; $x < 3; $x++){
+    //column maker
+    for($y = 0; $y < 3; $y++){
+        echo $grid[$z];
+        if($y < 2){
+            echo "|";
+        }
+        $z++;
+    }
+    echo PHP_EOL;
+}
+?>
+
+First to five heads
+
+<?php
+$input = trim(fgets(STDIN));
+$a = explode(',', $input);
+$player1 = 0;
+$player2 = 0;
+$count = count($a);
+$round = 0;
+for($x = 0; $x <= $count; $x += 2){
+    $z = $x + 1;
+    if($a[$x] == 'h'){
+        $player1++;
+    }
+    if($a[$z] == 'h'){
+        $player2++;
+    }
+    $round++;
+    if($player1 == 5){
+        echo 'Player 1 wins in round'. ' ' . $round;
+        break;
+    }
+    if($player2 == 5){
+        echo 'Player 2 wins in round'. ' ' . $round;
+        break;
+    }
+}
+?>
+
+Rock Paper Scissors
+
+<?php
+$input = trim(fgets(STDIN));
+$a = explode(',', $input);
+$player1 = 0;
+$player2 = 0;
+$count = count($a);
+$round = 0;
+for($x = 0; $x <= $count; $x += 2){
+    $z = $x + 1;
+    if($a[$x] == 'h'){
+        $player1++;
+    }
+    if($a[$z] == 'h'){
+        $player2++;
+    }
+    $round++;
+    if($player1 == 5){
+        echo 'Player 1 wins in round'. ' ' . $round;
+        break;
+    }
+    if($player2 == 5){
+        echo 'Player 2 wins in round'. ' ' . $round;
+        break;
+    }
+}
+?>
+
+Soccer tournament
+
+<?php
+$input = trim(fgets(STDIN));
+$game = explode (",", $input);
+$t1 = 0;
+$t2 = 0;
+$t3 = 0;
+$t4 = 0;
+$count = count($game);
+for ($x = 0; $x <= $count; $x++) {
+    if ($x == 0) {
+        if ($game[0] == "W") {
+            $t1 = $t1 + 3;
+        }
+        elseif ($game[0] == "T"){
+            $t1 = $t1 + 1;
+            $t2 = $t2 + 1;
+        }
+        elseif($game[0] == "L") {
+            $t2 = $t2 + 3 ;
+        }
+    
+    
+    }
+    if ($x == 1) {
+        if ($game[1] == "W") {
+            $t1 = $t1 + 3;
+        }
+        elseif ($game[1] == "T"){
+            $t1 = $t1 + 1;
+            $t3 = $t3 + 1;
+        }
+        elseif($game[1] == "L") {
+            $t3 = $t3 + 3;
+        }
+        
+    
+    }
+    if ($x == 2) {
+        if ($game[2] == "W") {
+            $t1 = $t1 + 3;
+        }
+        elseif ($game[2] == "T"){
+            $t1 = $t1 + 1;
+            $t4 = $t4 + 1;
+        }
+        elseif($game[2] == "L") {
+            $t4 = $t4 + 3;
+        }
+    
+    
+    }
+    if ($x == 3) {
+        if ($game[3] == "W") {
+            $t2 = $t2 + 3;
+        }
+        elseif ($game[3] == "T"){
+            $t2 = $t2 + 1;
+            $t3 = $t3 + 1;
+        }
+        elseif($game[3] == "L") {
+            $t3 = $t3 + 3;
+        }
+    
+    
+    }
+    if ($x == 4) {
+        if ($game[4] == "W") {
+            $t2 = $t2 + 3;
+        }
+        elseif ($game[4] == "T"){
+            $t2 = $t2 + 1;
+            $t4 = $t4 + 1;
+        }
+        elseif($game[4] == "L") {
+            $t4 = $t4 + 3;
+        }
+    
+    
+    }
+    if ($x == 5) {
+        if ($game[5] == "W") {
+            $t3 = $t3 + 3;
+        }
+        elseif ($game[5] == "T"){
+            $t3 = $t3 + 1;
+            $t4 = $t4 + 1;
+        }
+        elseif($game[5] == "L") {
+            $t4 = $t4 + 3;
+        }
+    
+    
+    }
+}
+echo "A " . $t1 . "pnts";
+echo PHP_EOL;
+echo "B " . $t2 . "pnts";
+echo PHP_EOL;
+echo "C " . $t3 . "pnts";
+echo PHP_EOL;
+echo "D " . $t4 . "pnts";
+
+
+?>
+
+Following the lines and obstacle avoidance
+
+#include <Arduino.h>
+#define ENB 5
+#define IN1 7
+#define IN2 8
+#define IN3 9
+#define IN4 11
+#define ENA 6
+#define LT_R !digitalRead(10)
+#define LT_M !digitalRead(4)
+#define LT_L !digitalRead(2)
+
+const int trigPin = A5;
+const int echoPin = A4;
+
+long duration;
+int distance;
+
+void forward(){
+  analogWrite(ENA, 140);
+  analogWrite(ENB, 140);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  Serial.println("go forward!");
+}
+void left(){
+  analogWrite(ENA, 140);
+  analogWrite(ENB, 140);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  Serial.println("go left!");
+}
+void right(){
+  analogWrite(ENA, 140);
+  analogWrite(ENB, 140);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  Serial.println("go right!");
+}
+void stop(){
+  digitalWrite(ENA, LOW);
+  digitalWrite(ENB, LOW);
+  Serial.println("Stop!");
+}
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  pinMode(ENB, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+}
+void loop(){
+  //servo
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn (echoPin, HIGH);
+  distance = duration*0.034/2;
+  Serial.print("Distance: ");
+  Serial.println(distance); 
+  //sensor
+  Serial.print("Left Light Sensor: ");
+  Serial.println(LT_L);
+  Serial.print("Middle Light Sensor: ");
+  Serial.println(LT_M);
+  Serial.print("Right Light Sensor: ");
+  Serial.println(LT_R);
+  if(LT_L == 1){
+    left();
+  }
+  if(LT_M == 1){
+    forward();
+  }
+  if(LT_R == 1){
+    right();
+  }
+  //servo 
+  if(distance <= 10){
+    stop();
+    delay(100);
+    right();
+    delay(500);
+    forward();
+    delay(600);
+    left();
+    delay(400);
+    forward();
+    delay(400);
+    left();
+    delay(700);
+    forward();
+    delay(500);
+  }
+}
+
+
+
+
+
+
+
